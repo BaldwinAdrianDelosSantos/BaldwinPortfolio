@@ -237,6 +237,7 @@
       'Content Moderator',
       'ICT Programmer',
       'Web Developer',
+      'Python Developer',
       'Problem Solver',
       'Continuous Learner'
     ];

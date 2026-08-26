@@ -606,6 +606,15 @@ button {
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   min-height: 2rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.typewriter-prefix {
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .typewriter-text {
@@ -639,18 +648,24 @@ button {
   flex-wrap: wrap;
 }
 
+.hero-cta .btn {
+  min-height: 52px;
+  padding: 1rem 2rem;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 0.9375rem;
   font-weight: 600;
   transition: var(--transition);
   border: none;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .btn svg {
@@ -698,7 +713,7 @@ button {
   padding: 0.5rem 1rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-secondary);
@@ -710,6 +725,7 @@ button {
   border-color: var(--accent);
   color: var(--accent);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
 }
 
 /* ========================================
