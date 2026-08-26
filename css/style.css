@@ -1206,6 +1206,10 @@ button {
   font-weight: 600;
   margin-top: 0.5rem;
   transition: var(--transition);
+  transform: none;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
 }
 
 .project-info a:hover {
