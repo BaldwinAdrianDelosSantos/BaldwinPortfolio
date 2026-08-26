@@ -1090,13 +1090,12 @@ button {
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
   border-color: var(--border-hover);
   box-shadow: var(--shadow-glow);
 }
 
 .project-image {
-  height: 200px;
+  height: 220px;
   background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
   display: flex;
   align-items: center;
@@ -1112,13 +1111,18 @@ button {
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  transition: transform 0.5s ease;
 }
 
-.project-icon,
+.project-card:hover .project-preview-img {
+  transform: scale(1.05);
+}
+
 .project-image span,
 .project-image b {
   position: relative;
   z-index: 2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
 
 .project-icon {
@@ -1140,11 +1144,13 @@ button {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 3;
 }
 
 .project-card:hover .project-overlay {
@@ -1160,6 +1166,9 @@ button {
   font-size: 0.875rem;
   transition: var(--transition);
   transform: translateY(10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .project-card:hover .project-link {
@@ -1188,10 +1197,27 @@ button {
   margin-bottom: 1rem;
 }
 
+.project-info a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  transition: var(--transition);
+}
+
+.project-info a:hover {
+  color: var(--accent-secondary);
+  transform: translateX(3px);
+}
+
 .project-tags {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+  margin-top: 0.75rem;
 }
 
 .project-tags span {
