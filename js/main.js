@@ -371,10 +371,6 @@
     updateScroll();
   };
 
-    window.addEventListener('scroll', debounce(updateScroll, 10));
-    updateScroll();
-  };
-
   // ========================================
   // Active Nav Link
   // ========================================
