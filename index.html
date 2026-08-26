@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Baldwin Adrian Delos Santos - Content Moderator, ICT Programming Graduate, and Aspiring Developer">
+  <title>Baldwin Adrian Delos Santos | Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <span class="loader-bracket">&lt;</span>
+        <span class="loader-name">B</span>
+        <span class="loader-bracket">/&gt;</span>
+      </div>
+      <div class="loader-bar">
+        <div class="loader-progress"></div>
+      </div>
+      <p class="loader-text">INITIALIZING PORTFOLIO</p>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Particle Background -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <a href="#home" class="logo">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">Baldwin</span>
+      <span class="logo-bracket">/&gt;</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-nav">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#skills" class="mobile-link">Skills</a>
+      <a href="#projects" class="mobile-link">Projects</a>
+      <a href="#experience" class="mobile-link">Experience</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-badge reveal">
+          <span class="pulse-dot"></span>
+          Available for Opportunities
+        </div>
+        <h1 class="hero-title reveal">
+          Hi, I'm <span class="gradient-text">Baldwin Adrian Delos Santos</span>
+        </h1>
+        <div class="hero-typewriter reveal">
+          <span class="typewriter-prefix">I'm a </span>
+          <span class="typewriter-text" id="typewriter"></span>
+          <span class="typewriter-cursor">|</span>
+        </div>
+        <p class="hero-description reveal">
+          Content Moderator with ICT Programming background. Passionate about building clean, functional web experiences and growing into a professional developer.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#projects" class="btn btn-primary magnetic">
+            View My Work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#" class="btn btn-secondary magnetic">
+            Download CV
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+          </a>
+        </div>
+        <div class="hero-tech reveal">
+          <span class="tech-tag">HTML</span>
+          <span class="tech-tag">CSS</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">Java</span>
+          <span class="tech-tag">PHP</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">MySQL</span>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="hero-avatar">
+          <div class="avatar-ring"></div>
+          <div class="avatar-inner">
+            <span>B</span>
+          </div>
+          <div class="avatar-glow"></div>
+        </div>
+        <div class="hero-card">
+          <div class="card-header">
+            <span class="card-dot"></span>
+            <span class="card-dot"></span>
+            <span class="card-dot"></span>
+            <span class="card-title">profile.exe</span>
+          </div>
+          <div class="card-body">
+            <div class="profile-item">
+              <span class="profile-label">Role</span>
+              <span class="profile-value">Content Moderator</span>
+            </div>
+            <div class="profile-item">
+              <span class="profile-label">Path</span>
+              <span class="profile-value">ICT Programming → Dev</span>
+            </div>
+            <div class="profile-item">
+              <span class="profile-label">Location</span>
+              <span class="profile-value">Davao City, PH</span>
+            </div>
+            <div class="profile-item">
+              <span class="profile-label">Status</span>
+              <span class="profile-value status-online">Online</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll to explore</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+      <div class="section-header">
+        <span class="section-number reveal">01</span>
+        <h2 class="section-title reveal">About <span class="gradient-text">Me</span></h2>
+        <div class="section-line reveal"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-text reveal">
+          <p class="about-lead">
+            Dedicated Content Moderator with experience in live-streaming environments, community safety, policy compliance, and careful handling of sensitive content.
+          </p>
+          <p>
+            I combine that attention to detail with an ICT Programming background and solid web development skills. My goal is to transition into a professional developer role while bringing my moderation expertise—precision, policy adherence, and quality focus—to the teams I work with.
+          </p>
+          <p>
+            I'm currently building my portfolio with real projects in HTML, CSS, JavaScript, Java, PHP, and Node.js, and I'm looking for opportunities to grow as a developer.
+          </p>
+        </div>
+        <div class="stats-grid reveal">
+          <div class="stat-card">
+            <span class="stat-number" data-target="9">0</span>
+            <span class="stat-label">Months Moderation Experience</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="7">0</span>
+            <span class="stat-suffix">+</span>
+            <span class="stat-label">Technologies & Tools</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="6">0</span>
+            <span class="stat-label">GitHub Repositories</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" data-target="100">0</span>
+            <span class="stat-suffix">%</span>
+            <span class="stat-label">Dedicated to Growth</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+      <div class="section-header centered">
+        <span class="section-number reveal">02</span>
+        <h2 class="section-title reveal">My <span class="gradient-text">Skills</span></h2>
+        <div class="section-line reveal"></div>
+      </div>
+      <div class="skills-container">
+        <div class="skill-category reveal">
+          <h3 class="skill-category-title">Frontend</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">HTML5</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="85"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">CSS3</span>
+                <span class="skill-percent">80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="80"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="75"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category reveal delay-1">
+          <h3 class="skill-category-title">Backend</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Java</span>
+                <span class="skill-percent">70%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="70"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">PHP</span>
+                <span class="skill-percent">65%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="65"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Node.js</span>
+                <span class="skill-percent">60%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="60"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-category reveal delay-2">
+          <h3 class="skill-category-title">Database & Tools</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">MySQL</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="75"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Git</span>
+                <span class="skill-percent">70%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" data-progress="70"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Content Moderation</span>
+                <span class="skill-percent">95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress highlight" data-progress="95"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+      <div class="section-header centered">
+        <span class="section-number reveal">03</span>
+        <h2 class="section-title reveal">Featured <span class="gradient-text">Projects</span></h2>
+        <div class="section-line reveal"></div>
+        <p class="section-subtitle reveal">A selection of projects I've built while learning and growing as a developer.</p>
+      </div>
+      <div class="projects-filter reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="css">CSS</button>
+        <button class="filter-btn" data-filter="javascript">JavaScript</button>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card reveal" data-category="javascript">
+          <div class="project-image">
+            <div class="project-icon">JS</div>
+            <div class="project-overlay">
+              <a href="https://github.com/BaldwinAdrianDelosSantos/ALittleAboutYou" target="_blank" class="project-link">View Project</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>ALittleAboutYou</h3>
+            <p>Interactive JavaScript project</p>
+            <div class="project-tags">
+              <span>JavaScript</span>
+              <span>Interactive</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal delay-1" data-category="css">
+          <div class="project-image">
+            <div class="project-icon">CSS</div>
+            <div class="project-overlay">
+              <a href="https://github.com/BaldwinAdrianDelosSantos/LittleSurprise" target="_blank" class="project-link">View Project</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>LittleSurprise</h3>
+            <p>Creative CSS animation project</p>
+            <div class="project-tags">
+              <span>CSS</span>
+              <span>Animation</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal delay-2" data-category="css">
+          <div class="project-image">
+            <div class="project-icon">CSS</div>
+            <div class="project-overlay">
+              <a href="https://github.com/BaldwinAdrianDelosSantos/CrossingPaths" target="_blank" class="project-link">View Project</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>CrossingPaths</h3>
+            <p>Stylish CSS design project</p>
+            <div class="project-tags">
+              <span>CSS</span>
+              <span>Design</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal" data-category="css">
+          <div class="project-image">
+            <div class="project-icon">CSS</div>
+            <div class="project-overlay">
+              <a href="https://github.com/BaldwinAdrianDelosSantos/GiftForYou" target="_blank" class="project-link">View Project</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>GiftForYou</h3>
+            <p>Creative CSS gift page</p>
+            <div class="project-tags">
+              <span>CSS</span>
+              <span>Creative</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal delay-1" data-category="web">
+          <div class="project-image">
+            <div class="project-icon">PY</div>
+            <div class="project-overlay">
+              <a href="https://github.com/BaldwinAdrianDelosSantos/profilling" target="_blank" class="project-link">View Project</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Profilling</h3>
+            <p>Web-based project</p>
+            <div class="project-tags">
+              <span>Web</span>
+              <span>Application</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-card reveal delay-2" data-category="web">
+          <div class="project-image">
+            <div class="project-icon">HW</div>
+            <div class="project-overlay">
+              <a href="https://github.com/BaldwinAdrianDelosSantos/hotdog" target="_blank" class="project-link">View Project</a>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3>Hotdog</h3>
+            <p>Web development project</p>
+            <div class="project-tags">
+              <span>Web</span>
+              <span>Development</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section experience" id="experience">
+      <div class="section-header">
+        <span class="section-number reveal">04</span>
+        <h2 class="section-title reveal">Work <span class="gradient-text">Experience</span></h2>
+        <div class="section-line reveal"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Content Moderator</h3>
+                <p class="timeline-company">Six Eleven Building</p>
+              </div>
+              <span class="timeline-date">May 2025 - Feb 2026</span>
+            </div>
+            <ul class="timeline-details">
+              <li>Reviewed and moderated live-streaming and user-generated content for community-guideline compliance.</li>
+              <li>Identified and removed inappropriate, harmful, or policy-violating content.</li>
+              <li>Maintained confidentiality and accuracy while handling sensitive content.</li>
+              <li>Collaborated with team members to improve moderation quality and consistency.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span>Content Moderation</span>
+              <span>Policy Compliance</span>
+              <span>Team Collaboration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section education" id="education">
+      <div class="section-header">
+        <span class="section-number reveal">05</span>
+        <h2 class="section-title reveal">My <span class="gradient-text">Education</span></h2>
+        <div class="section-line reveal"></div>
+      </div>
+      <div class="education-grid">
+        <div class="education-card reveal">
+          <div class="education-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div class="education-content">
+            <h3>Philippine Women's College of Davao</h3>
+            <p class="education-degree">TVL — ICT Programming Strand</p>
+            <p class="education-year">2023 — 2025</p>
+          </div>
+        </div>
+        <div class="education-card reveal delay-1">
+          <div class="education-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div class="education-content">
+            <h3>Ma-a National High School</h3>
+            <p class="education-degree">Junior High School</p>
+            <p class="education-year">2018 — 2022</p>
+          </div>
+        </div>
+        <div class="education-card reveal delay-2">
+          <div class="education-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div class="education-content">
+            <h3>Bolton Elementary School</h3>
+            <p class="education-degree">Elementary Education</p>
+            <p class="education-year">2010 — 2018</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+      <div class="section-header centered">
+        <span class="section-number reveal">06</span>
+        <h2 class="section-title reveal">Let's <span class="gradient-text">Connect</span></h2>
+        <div class="section-line reveal"></div>
+        <p class="section-subtitle reveal">Interested in working together? Feel free to reach out through any of these channels.</p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info reveal">
+          <a href="mailto:baldwinadriandelossantos611@gmail.com" class="contact-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p>baldwinadriandelossantos611@gmail.com</p>
+            </div>
+          </a>
+          <a href="https://github.com/BaldwinAdrianDelosSantos" target="_blank" class="contact-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </div>
+            <div class="contact-details">
+              <h4>GitHub</h4>
+              <p>@BaldwinAdrianDelosSantos</p>
+            </div>
+          </a>
+          <a href="#" class="contact-card">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="contact-details">
+              <h4>Location</h4>
+              <p>Davao City, Philippines</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Baldwin Adrian Delos Santos. Built with passion and code.</p>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
