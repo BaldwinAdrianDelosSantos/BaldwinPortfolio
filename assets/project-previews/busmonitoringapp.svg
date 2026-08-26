@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#54a0ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2e86de;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="250" fill="url(#bg)"/>
+  <text x="200" y="100" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="white" text-anchor="middle" opacity="0.95">Bus Monitoring</text>
+  <text x="200" y="145" font-family="Arial,sans-serif" font-size="36" font-weight="bold" fill="white" text-anchor="middle" opacity="0.95">System</text>
+  <text x="200" y="200" font-family="Arial,sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.8">Davao City Live Tracking</text>
+</svg>
