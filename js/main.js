@@ -648,6 +648,69 @@
   };
 
   // ========================================
+  // Video Modal
+  // ========================================
+  const initVideoModal = () => {
+    const modal = document.getElementById('videoModal');
+    const modalTitle = document.getElementById('videoModalTitle');
+    const modalClose = document.getElementById('videoModalClose');
+    const videoWrapper = document.getElementById('videoWrapper');
+    const videoPlaceholder = document.getElementById('videoPlaceholder');
+    const demoButtons = document.querySelectorAll('.project-demo-btn');
+
+    if (!modal || !modalClose || !videoWrapper) return;
+
+    const openModal = (title, src) => {
+      modalTitle.textContent = title;
+      videoWrapper.innerHTML = '';
+
+      if (src) {
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.allow = 'autoplay; encrypted-media';
+        iframe.allowFullscreen = true;
+        videoWrapper.appendChild(iframe);
+      } else {
+        videoWrapper.appendChild(videoPlaceholder);
+      }
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      videoWrapper.innerHTML = '';
+      videoWrapper.appendChild(videoPlaceholder);
+    };
+
+    demoButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const title = btn.dataset.videoTitle || 'Project Demo';
+        const src = btn.dataset.videoSrc || '';
+        openModal(title, src);
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  };
+
+  // ========================================
   // Initialize Everything
   // ========================================
   const init = () => {
@@ -663,6 +726,7 @@
     initScrollToTop();
     init3DTilt();
     initParallax();
+    initVideoModal();
     updateYear();
   };
 
