@@ -17,7 +17,7 @@
   const mobileMenu = document.getElementById('mobileMenu');
   const menuToggle = document.getElementById('menuToggle');
   const themeToggle = document.getElementById('themeToggle');
-  const scrollTop = document.getElementById('scrollTop');
+  const scrollTopBtn = document.getElementById('scrollTop');
   const typewriter = document.getElementById('typewriter');
   const particleCanvas = document.getElementById('particleCanvas');
   const yearSpan = document.getElementById('year');
@@ -76,6 +76,13 @@
   const initCursor = () => {
     if (!cursor || !cursorFollower) return;
 
+    // Hide cursor on touch devices
+    if ('ontouchstart' in window) {
+      cursor.style.display = 'none';
+      cursorFollower.style.display = 'none';
+      return;
+    }
+
     let mouseX = 0;
     let mouseY = 0;
     let cursorX = 0;
@@ -89,7 +96,6 @@
     });
 
     const animateCursor = () => {
-      // Smooth cursor follow
       cursorX += (mouseX - cursorX) * 0.2;
       cursorY += (mouseY - cursorY) * 0.2;
       followerX += (mouseX - followerX) * 0.1;
@@ -105,8 +111,7 @@
 
     animateCursor();
 
-    // Hover effects
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-card, .filter-btn');
+    const hoverElements = document.querySelectorAll('a, button, .project-card, .filter-btn');
     hoverElements.forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursorFollower.classList.add('hover');
@@ -115,12 +120,6 @@
         cursorFollower.classList.remove('hover');
       });
     });
-
-    // Hide cursor on mobile
-    if ('ontouchstart' in window) {
-      cursor.style.display = 'none';
-      cursorFollower.style.display = 'none';
-    }
   };
 
   // ========================================
@@ -139,8 +138,6 @@
     };
 
     resizeCanvas();
-    window.addEventListener('resize', debounce(resizeCanvas, 200));
-
     class Particle {
       constructor() {
         this.x = Math.random() * particleCanvas.width;
@@ -339,9 +336,9 @@
   // ========================================
   const initScrollEffects = () => {
     const updateScroll = () => {
-      const scrollTop = window.scrollY;
+      const currentScrollY = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
+      const scrollPercent = (currentScrollY / docHeight) * 100;
 
       // Update scroll progress bar
       if (scrollProgress) {
@@ -350,7 +347,7 @@
 
       // Update header
       if (header) {
-        if (scrollTop > 100) {
+        if (currentScrollY > 100) {
           header.classList.add('scrolled');
         } else {
           header.classList.remove('scrolled');
@@ -358,15 +355,21 @@
       }
 
       // Show/hide scroll to top button
-      if (scrollTop > 500) {
-        scrollTop?.classList.add('visible');
-      } else {
-        scrollTop?.classList.remove('visible');
+      if (scrollTopBtn) {
+        if (currentScrollY > 500) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
+        }
       }
 
       // Update active nav link
       updateActiveNavLink();
     };
+
+    window.addEventListener('scroll', debounce(updateScroll, 10));
+    updateScroll();
+  };
 
     window.addEventListener('scroll', debounce(updateScroll, 10));
     updateScroll();
@@ -513,9 +516,9 @@
   // Scroll to Top
   // ========================================
   const initScrollToTop = () => {
-    if (!scrollTop) return;
+    if (!scrollTopBtn) return;
 
-    scrollTop.addEventListener('click', () => {
+    scrollTopBtn.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -589,12 +592,6 @@
     init3DTilt();
     initParallax();
     updateYear();
-
-    // Disable cursor on touch devices
-    if ('ontouchstart' in window) {
-      cursor.style.display = 'none';
-      cursorFollower.style.display = 'none';
-    }
   };
 
   // Start when DOM is ready
