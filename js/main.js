@@ -80,6 +80,7 @@
     if ('ontouchstart' in window) {
       cursor.style.display = 'none';
       cursorFollower.style.display = 'none';
+      document.body.style.cursor = 'auto';
       return;
     }
 
@@ -111,7 +112,7 @@
 
     animateCursor();
 
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .filter-btn');
+    const hoverElements = document.querySelectorAll('a, button, .project-card, .filter-btn, .timeline-card, .education-card, .contact-card, .stat-card, .skill-category');
     hoverElements.forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursorFollower.classList.add('hover');
@@ -131,6 +132,7 @@
     const ctx = particleCanvas.getContext('2d');
     let particles = [];
     let animationId;
+    const isMobile = 'ontouchstart' in window;
 
     const resizeCanvas = () => {
       particleCanvas.width = window.innerWidth;
@@ -138,13 +140,14 @@
     };
 
     resizeCanvas();
+
     class Particle {
       constructor() {
         this.x = Math.random() * particleCanvas.width;
         this.y = Math.random() * particleCanvas.height;
         this.size = Math.random() * 2 + 0.5;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.speedX = (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5);
+        this.speedY = (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5);
         this.opacity = Math.random() * 0.5 + 0.2;
       }
 
@@ -166,14 +169,18 @@
 
     const createParticles = () => {
       particles = [];
-      const numberOfParticles = Math.floor((particleCanvas.width * particleCanvas.height) / 15000);
+      const area = particleCanvas.width * particleCanvas.height;
+      // Reduce particles on mobile for better performance
+      const divisor = isMobile ? 25000 : 15000;
+      const numberOfParticles = Math.floor(area / divisor);
       for (let i = 0; i < numberOfParticles; i++) {
         particles.push(new Particle());
       }
     };
 
     const connectParticles = () => {
-      const maxDistance = 150;
+      const maxDistance = isMobile ? 100 : 150;
+      const maxOpacity = isMobile ? 0.15 : 0.2;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const distance = Math.sqrt(
@@ -182,7 +189,7 @@
           );
 
           if (distance < maxDistance) {
-            const opacity = (1 - distance / maxDistance) * 0.2;
+            const opacity = (1 - distance / maxDistance) * maxOpacity;
             ctx.strokeStyle = `rgba(0, 212, 255, ${opacity})`;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
@@ -209,10 +216,15 @@
     createParticles();
     animateParticles();
 
-    window.addEventListener('resize', debounce(() => {
-      resizeCanvas();
-      createParticles();
-    }, 200));
+    // Use passive resize listener for better mobile performance
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        resizeCanvas();
+        createParticles();
+      }, 250);
+    }, { passive: true });
   };
 
   // ========================================
@@ -413,6 +425,38 @@
         document.body.classList.remove('menu-open');
       });
     });
+
+    // Close mobile menu when tapping outside
+    document.addEventListener('click', (e) => {
+      if (mobileMenu.classList.contains('active') &&
+          !mobileMenu.contains(e.target) &&
+          !menuToggle.contains(e.target)) {
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // Swipe right to close menu on mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    mobileMenu.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    mobileMenu.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    const handleSwipe = () => {
+      if (touchEndX < touchStartX - 50) {
+        menuToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    };
   };
 
   // ========================================
@@ -493,6 +537,13 @@
   // Magnetic Buttons
   // ========================================
   const initMagneticButtons = () => {
+    if (!magneticBtns.length) return;
+
+    // Skip on touch devices
+    if ('ontouchstart' in window) {
+      return;
+    }
+
     magneticBtns.forEach(btn => {
       btn.addEventListener('mousemove', (e) => {
         const rect = btn.getBoundingClientRect();
@@ -526,6 +577,16 @@
   // 3D Tilt Effect for Project Cards
   // ========================================
   const init3DTilt = () => {
+    if (!projectCards.length) return;
+
+    // Only enable on non-touch devices
+    if ('ontouchstart' in window) {
+      projectCards.forEach(card => {
+        card.style.transform = 'none';
+      });
+      return;
+    }
+
     projectCards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -560,14 +621,29 @@
   const initParallax = () => {
     const parallaxElements = document.querySelectorAll('.hero-avatar, .hero-card');
 
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
+    // Skip parallax on touch devices for better performance
+    if ('ontouchstart' in window) {
+      return;
+    }
 
-      parallaxElements.forEach(el => {
-        const speed = el.dataset.parallaxSpeed || 0.5;
-        const yPos = -(scrolled * speed);
-        el.style.transform = `translateY(${yPos}px)`;
-      });
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY;
+
+          parallaxElements.forEach(el => {
+            const speed = el.dataset.parallaxSpeed || 0.5;
+            const yPos = -(scrolled * speed);
+            el.style.transform = `translateY(${yPos}px)`;
+          });
+
+          ticking = false;
+        });
+
+        ticking = true;
+      }
     });
   };
 
