@@ -1105,24 +1105,33 @@ button {
   overflow: hidden;
 }
 
-.project-card:nth-child(2) .project-image {
-  background: linear-gradient(135deg, #7c3aed, #ec4899);
+.project-card:nth-child(2) .project-image,
+.project-birthday {
+  background: linear-gradient(135deg, #ff6b6b, #feca57);
 }
 
-.project-card:nth-child(3) .project-image {
-  background: linear-gradient(135deg, #10b981, #00d4ff);
+.project-card:nth-child(3) .project-image,
+.project-bus {
+  background: linear-gradient(135deg, #54a0ff, #2e86de);
 }
 
-.project-card:nth-child(4) .project-image {
-  background: linear-gradient(135deg, #f59e0b, #ef4444);
+.project-card:nth-child(4) .project-image,
+.project-music {
+  background: linear-gradient(135deg, #5f27cd, #341f97);
 }
 
-.project-card:nth-child(5) .project-image {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+.project-card:nth-child(5) .project-image,
+.project-mood {
+  background: linear-gradient(135deg, #10ac84, #1dd1a1);
 }
 
-.project-card:nth-child(6) .project-image {
-  background: linear-gradient(135deg, #ec4899, #f59e0b);
+.project-card:nth-child(6) .project-image,
+.project-ai {
+  background: linear-gradient(135deg, #ee5253, #0abde3);
+}
+
+.project-life {
+  background: linear-gradient(135deg, #feca57, #ff6b6b);
 }
 
 .project-icon {
