@@ -914,6 +914,43 @@ button {
   font-size: 1.0625rem;
 }
 
+.about-focus {
+  margin-top: 2rem;
+}
+
+.about-focus-title {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.about-focus-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about-focus-list span {
+  padding: 0.4rem 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.about-focus-list span:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1017,70 +1054,26 @@ button {
 .skills-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .skill-item {
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
   transition: var(--transition);
 }
 
-.skill-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
+.skill-item:hover {
+  border-color: var(--border-hover);
+  transform: translateX(4px);
 }
 
 .skill-name {
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--text-primary);
-}
-
-.skill-percent {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-.skill-bar {
-  height: 8px;
-  background: var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-}
-
-.skill-progress {
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
-  border-radius: 4px;
-  width: 0%;
-  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  box-shadow: 0 0 15px var(--accent-glow), 0 0 30px rgba(0, 212, 255, 0.2);
-}
-
-.skill-progress::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.skill-progress.highlight {
-  background: linear-gradient(90deg, #10b981, #34d399);
-  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
 }
 
 /* ========================================
@@ -1484,6 +1477,45 @@ button {
   transform: translateY(-2px);
 }
 
+.experience-takeaway {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.experience-takeaway h4 {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  margin-bottom: 0.75rem;
+}
+
+.experience-takeaway ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.experience-takeaway li {
+  padding: 0.35rem 0.8rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.experience-takeaway li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
 /* ========================================
    Education Section
 ======================================== */
@@ -1547,6 +1579,87 @@ button {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   color: var(--accent);
+}
+
+/* ========================================
+   Learning Journey Section
+======================================== */
+.learning {
+  background: var(--bg-secondary);
+}
+
+.journey-container {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.journey-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+.journey-item:hover {
+  border-color: var(--border-hover);
+  transform: translateX(6px);
+  box-shadow: var(--shadow), 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+.journey-year {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.journey-content h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: var(--text-primary);
+}
+
+.journey-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* ========================================
+   GitHub Section
+======================================== */
+.github-section {
+  background: var(--bg-primary);
+}
+
+.github-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ========================================
+   Resume Section
+======================================== */
+.resume-section {
+  background: var(--bg-secondary);
+}
+
+.resume-cta {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 /* ========================================
